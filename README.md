@@ -1,4 +1,4 @@
 # Paper Downloader
 
-First and only argument is the version
-Requires requests
+- First and only argument is the version
+- Requires requests
