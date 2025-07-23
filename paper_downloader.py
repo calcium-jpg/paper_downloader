@@ -2,6 +2,7 @@ import requests
 import json
 import sys
 import hashlib
+import logging
 
 # REFER TO https://fill.papermc.io/swagger-ui/index.html#/ FOR API FORMAT
 
@@ -26,14 +27,14 @@ def download(version):
 
                     return 0
                 else:
-                    print("Checksum does not match.")
-                    return -1
+                    logging.error("Checksum does not match.")
+                    return 1
 
-        print("Stable release not found.")
-        return -1
+        logging.info("Stable release not found.")
+        return 1
     else:
-        print("An error occured with the Paper API.")
-        return -1
+        logging.error("An error occured with the Paper API.")
+        return 1
 
 
 if __name__ == "__main__":
@@ -42,7 +43,7 @@ if __name__ == "__main__":
         sys.exit(download(version))
     else:
         print("Provide version.")
-        sys.exit(-1)
+        sys.exit(1)
 
 
 
